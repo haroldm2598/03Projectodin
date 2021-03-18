@@ -47,6 +47,7 @@ body {
 .container button:hover {
   background: lightgray;
   color: #b45cfc;
+  padding: 20px 40px;
 }
 .container .gridBox {
   border: 1px solid #000;

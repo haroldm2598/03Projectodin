@@ -1,7 +1,8 @@
 const gridBox = document.querySelector('.gridBox');
 const button = document.querySelector('button');
 
-window.addEventListener('load', setDefault());
+window.addEventListener('load', setDefault);
+button.addEventListener('click', newSize);
 
 function setDefault() {
 	createDivs(16, 16);
@@ -9,14 +10,6 @@ function setDefault() {
 
 // To create grid Divs using for loop and function declaration
 function createDivs(cols, rows) {
-	// Create function for random RGB
-	function randomColor() {
-		const r = Math.floor(Math.random() * 256);
-		const g = Math.floor(Math.random() * 256);
-		const b = Math.floor(Math.random() * 256);
-		return (bgColor = `rgb(${r}, ${g}, ${b})`);
-	}
-
 	// Loop the grid cols and rows
 	for (let i = 0; i < cols * rows; i++) {
 		const div = document.createElement('div');
@@ -42,21 +35,34 @@ function createDivs(cols, rows) {
 	}
 }
 
-// FIND A SOLUTION FOR CREATE NEW TILES IN GRID
-function newSize() {
-	const column = parseInt(prompt('Enter column'));
-	const row = parseInt(prompt('Enter row'));
-	return createDivs(column, row);
+// Create function for random RGB
+function randomColor() {
+	const r = Math.floor(Math.random() * 256);
+	const g = Math.floor(Math.random() * 256);
+	const b = Math.floor(Math.random() * 256);
+	return (bgColor = `rgb(${r}, ${g}, ${b})`);
 }
 
-button.addEventListener('click', (e) => {
-	if (button > 64) {
-		alert('only 1-64');
-	} else {
-		e.target.innerHTML = newSize();
-	}
-});
+// Function for newsize of grid
+function newSize() {
+	let column = parseInt(prompt('Enter column'));
+	let row = parseInt(prompt('Enter row'));
 
-// CONSOLE OR TESTING AREA
-// console.log(gridBox);
-// console.log(button);
+	if (column !== null && row !== null) {
+		if (column < 1 || column > 64 || row < 1 || row > 64) {
+			alert('Only 1-64');
+			newSize();
+		} else {
+			removeGrid();
+			createDivs(column, row);
+		}
+	}
+}
+
+// Function for removing the default of grid and insert new grid
+function removeGrid() {
+	const gridArray = Array.from(gridBox.childNodes);
+	gridArray.forEach((element) => {
+		gridBox.removeChild(element);
+	});
+}
