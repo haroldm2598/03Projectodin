@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -27,9 +27,11 @@ body {
   width: 100%;
   height: 100vh;
 }
+
 .container h1 {
   margin-bottom: 20px;
 }
+
 .container button {
   color: #d7a7ff;
   font-size: 1rem;
@@ -44,11 +46,14 @@ body {
   -webkit-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
 }
+
 .container button:hover {
   background: lightgray;
   color: #b45cfc;
   padding: 20px 40px;
 }
+
 .container .gridBox {
   border: 1px solid #000;
-}/*# sourceMappingURL=main.css.map */
+}
+/*# sourceMappingURL=main.css.map */
